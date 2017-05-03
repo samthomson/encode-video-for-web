@@ -13,7 +13,12 @@ this library uses ffmpeg and another wrapper package to help create all the requ
 
 Call `encode` passing in an input path, output file name, and an array of output formats (avi, mpeg4, webm)
 
+encode takes three parameters:
+ - input file: string, relative file path to mp4 avi (any filetype supported by ffmpeg) to convert
+ - output name: string, will be used as the path and base name for the output files, each will have an appropriate file extension added
+ - conversion types: string array, formats to conver to. supported; avi, mpeg4, webm
+
 ```
 var ae = require('encode-video-for-web')
-ae.encode('output-name', ['avi', 'mpeg4'])
+ae.encode('input-file.mp4', 'output-name', ['avi', 'mpeg4'])
 ```
