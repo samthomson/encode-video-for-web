@@ -1,18 +1,18 @@
-# adaptive-encoding
+# encode video for web
 
-video from different cameras will be of a different bit rate, so applying the same converstion transformation with ffmpeg will not produce output files consistently.
+browser support for videos is inconsistent. a video should be converted to different formats before even deciding which video player to use.
 
-this package solves that problem by using ffprobe to detect certain attributes and then determines a better video encoding setting for ffmpeg resulting in more predictable output videos.
+this library uses ffmpeg and another wrapper package to help create all the required assets for a video, for you to publish it online
 
 ## requirements
 
- - install both ffmpeg and ffprob and have them accesable on the path
+ - install both ffmpeg  and have it accesable on the path
  - run `npm i` to install this packages dependencies
 
 ## usage
 
 
 ```
-var ae = require('adaptive-encoding')
+var ae = require('encode-video-for-web')
 ae.encode('output-name', ['avi', 'mpeg4'], 1024)
 ```
