@@ -11,8 +11,9 @@ this library uses ffmpeg and another wrapper package to help create all the requ
 
 ## usage
 
+Call `encode` passing in an input path, output file name, and an array of output formats (avi, mpeg4, webm)
 
 ```
 var ae = require('encode-video-for-web')
-ae.encode('output-name', ['avi', 'mpeg4'], 1024)
+ae.encode('output-name', ['avi', 'mpeg4'])
 ```

@@ -43,20 +43,30 @@ function pAVI (sInputFile, sOutputFilename) {
 	);
 }
 
-function convertAll(sInputFile, sOutputFilename) {
-	Promise.all(
-		[
-			pMP4(sInputFile, sOutputFilename),
-			pWEBM(sInputFile, sOutputFilename),
-			pAVI(sInputFile, sOutputFilename)
-		]
-	).then(() => {
+function convertAll(sInputFile, sOutputFilename, aOutputFormats) {
+	// build up array of conversion promises
+	let aFormats = [];
+	aOutputFormats.forEach(value => {
+		switch(value)
+		{
+			case 'mpeg4':
+				aFormats.push(pAVI(sInputFile, sOutputFilename))
+				break;
+			case 'avi':
+				aFormats.push(pAVI(sInputFile, sOutputFilename))
+				break;
+			case 'webm':
+				aFormats.push(pAVI(sInputFile, sOutputFilename))
+				break;
+		}
+	})
+	// do all requested conversion
+	Promise.all(aFormats).then(() => {
 	    console.log('finished conevrting')
 	});
 }
 
 exports.encode = function(sInputFile, sOutputFilename, aOutputFormats, iKilobytesPerSecond) {
 	console.log(`convert ${sInputFile} into ${sOutputFilename}`);
-	// pMP4(sInputFile, sOutputFilename)
 	convertAll(sInputFile, sOutputFilename)
 }
